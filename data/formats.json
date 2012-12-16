@@ -1,0 +1,38 @@
+[
+  {
+    "type":"book",
+    "fields":[
+      {
+        "name":"Last Name",
+        "delimiter":","
+      },
+      {
+        "name":"First Name",
+        "delimiter":"."
+      },
+      {
+        "name":"Title",
+        "delimiter":".",
+        "format":"i"
+      },
+      {
+        "name":"Place of Publication",
+        "delimiter":":"
+      },
+      {
+        "name":"Publisher",
+        "delimiter":","
+      },
+      {
+        "name":"Year of Publication",
+        "delimiter":"."
+      },
+      {
+        "name":"Medium of Publication",
+        "delimiter":"."
+      }
+    ]
+  }
+]
+
+    

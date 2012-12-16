@@ -1,0 +1,1 @@
+angular.module('mla-cite-helper',['directives', 'services', 'ui']);

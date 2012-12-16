@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='mla-cite-helper'>
+  <head>
+    <title>MLA Cite Helper</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/smoothness/jquery-ui-1.9.0.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/vendor/jquery-1.8.2.min.js"></script>
+    <script src="js/vendor/jquery-ui-1.9.0.js"></script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <script src="js/vendor/angular.js"></script>
+    <script src="js/vendor/angular-ui.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/services.js"></script>
+
+  </head>
+
+  <body ng-controller="MainController">
+
+    <div class="container">
+      <div class="addBox">
+        <select ng-model="selectedFormat" ng-options="resource.type for resource in formats"></select>
+        <a ng-click="addCitation(selectedFormat)">Add Citation</a>
+      </div>
+      <div ui-sortable ng-model="citations">
+        <div ng-repeat="citation in citations">
+          <div class="citation">
+            <div ng-click="editCitation(citation)">{{compileCitation(citation)}}</div>
+            <button ng-click="removeCitation($index)">&times;</button>
+          </div>
+        </div>
+      </div>
+
+      <div ui-modal ng-model="showModal">
+        <!-- {{selectedCitation}} -->
+        <div ng-repeat="field in selectedCitation.fields">
+          {{field.name}}
+          <input type="text" ng-model="field.value"></input>
+        </div>
+        <a ng-click="showModal=false">Close</a>
+      </div>
+
+    </div>
+
+  </body>

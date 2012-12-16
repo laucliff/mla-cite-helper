@@ -1,0 +1,17 @@
+.addBox{
+  border: 2px solid black;
+}
+
+.citation{
+  background-color: gray;
+  border: 2px solid black;
+  padding: 7px;
+  margin: 4px;
+  position: relative;
+}
+
+.citation button{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
