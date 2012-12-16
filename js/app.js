@@ -1,1 +1,1 @@
-angular.module('mla-cite-helper',['directives', 'services', 'ui']);
+angular.module('mla-cite-helper',['directives', 'services', 'ui', 'ngSanitize']);

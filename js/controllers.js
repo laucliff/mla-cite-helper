@@ -5,6 +5,10 @@ function MainController($scope, $element, $http){
     $scope.selectedFormat = $scope.formats[0]
   })
 
+  $scope.tagText = function(text, tag){
+    return '<' + tag + '>' + text + '</' + tag + '>'
+  }
+
   $scope.citations = []
 
   $scope.addCitation = function(selectedFormat){
@@ -26,7 +30,9 @@ function MainController($scope, $element, $http){
     var compiled = ""
 
     var fieldValue = function(field){
-      return field.value || field.name
+      var value = field.value || field.name
+      if (field.style) value = $scope.tagText(value, field.style)
+      return value
     }
 
     angular.forEach(citation.fields, function(field){

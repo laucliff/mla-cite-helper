@@ -13,7 +13,7 @@
       {
         "name":"Title",
         "delimiter":".",
-        "format":"i"
+        "style":"i"
       },
       {
         "name":"Place of Publication",
