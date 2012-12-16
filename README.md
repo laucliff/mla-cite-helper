@@ -1,4 +1,4 @@
 mla-cite-helper
 ===============
 
-MLA Citation Helper
+MLA citation helper via Angular
