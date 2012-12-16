@@ -26,22 +26,30 @@
   <body ng-controller="MainController">
 
     <div class="container">
-      <div class="addBox">
+      <div class="box">
+        <div class="box-title">Step 1</div>
+        <div class="box-description">Add Citations.</div>
         <select ng-model="selectedFormat" ng-options="resource.type for resource in formats"></select>
         <a ng-click="addCitation(selectedFormat)">Add Citation</a>
       </div>
 
-      <div ui-sortable ng-model="citations" class="citeBox" ng-show="citations.length">
-        <div ng-repeat="citation in citations">
-          <div class="citation">
-            <div ng-click="editCitation(citation)" ng-bind-html="compileCitation(citation)"></div>
-            <button ng-click="removeCitation($index)">&times;</button>
+      <div class="box" ng-show="citations.length">
+        <div class="box-title">Step 2</div>
+        <div class="box-description">Organize and Edit.</div>
+        <div ui-sortable ng-model="citations">
+          <div ng-repeat="citation in citations">
+            <div class="citation">
+              <div ng-click="editCitation(citation)" ng-bind-html="compileCitation(citation)"></div>
+              <button ng-click="removeCitation($index)">&times;</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="finishBox">
-        <button ng-click="showExport=true">Finish</a>
+      <div class="box" ng-show="citations.length">
+        <div class="box-title">Step 3</div>
+        <div class="box-description">You're Done!</div>
+        <button class="btn" ng-click="showExport=true">Finish</button>
       </div>
 
     </div>

@@ -1,16 +1,17 @@
-.addBox, .citeBox, .finishBox{
+.box{
   border: 2px solid black;
   padding: 7px;
   margin: 4px;
 }
 
-.addBox{
+.box .box-title{
+  font-size: 24px;
+  line-height: 150%;
 }
 
-.citeBox{
-}
-
-.finishBox{  
+.box .box-description{
+  font-size: 16px;
+  line-height: 200%;
 }
 
 .citation{
