@@ -1,6 +1,6 @@
 [
   {
-    "type":"book",
+    "type":"Book",
     "fields":[
       {
         "name":"Last Name",

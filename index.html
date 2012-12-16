@@ -26,6 +26,11 @@
   <body ng-controller="MainController">
 
     <div class="container">
+
+      <div class="title">
+        MLA Cite Helper
+      </div>
+
       <div class="box">
         <div class="box-title">Step 1</div>
         <div class="box-description">Add Citations.</div>
@@ -54,21 +59,33 @@
 
     </div>
 
-    <div ui-modal ng-model="showExport">
-      <p class="export-title">Works Cited</p>
-      <div ng-repeat="citation in citations">
-        <div ng-bind-html="compileCitation(citation)" class="export-citation"></div>
+    <div ui-modal ng-model="showExport" class="modal">
+      <div class="modal-header">
+        <button type="button" class="close" aria-hidden="true" ng-click="showEdit=false">&times;</button>
+        <h3> Citations </h3>
       </div>
-      <a ng-click="showExport=false">Close</a>
+      <div class="modal-body">
+        <p class="export-title">Works Cited</p>
+        <div ng-repeat="citation in citations">
+          <div ng-bind-html="compileCitation(citation)" class="export-citation"></div>
+        </div>
+      </div>
     </div>
 
-    <div ui-modal ng-model="showEdit">
-      <!-- {{selectedCitation}} -->
-      <div ng-repeat="field in selectedCitation.fields">
-        {{field.name}}
-        <input type="text" ng-model="field.value"></input>
+    <div ui-modal ng-model="showEdit" class="modal">
+      <div class="modal-header">
+        <button type="button" class="close" aria-hidden="true" ng-click="showEdit=false">&times;</button>
+        <h3>{{selectedCitation.type}}</h3>
       </div>
-      <a ng-click="showEdit=false">Close</a>
+      <div class="modal-body">
+        <div ng-repeat="field in selectedCitation.fields">
+          {{field.name}}
+          <input type="text" ng-model="field.value"></input>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" ng-click="showEdit=false">Done</a>
+      </div>
     </div>
 
   </body>
