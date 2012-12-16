@@ -1,5 +1,16 @@
-.addBox{
+.addBox, .citeBox, .finishBox{
   border: 2px solid black;
+  padding: 7px;
+  margin: 4px;
+}
+
+.addBox{
+}
+
+.citeBox{
+}
+
+.finishBox{  
 }
 
 .citation{
@@ -14,4 +25,13 @@
   position: absolute;
   top: 5px;
   right: 5px;
+}
+
+.export-title{
+  text-align: center;
+}
+
+.export-citation{
+  padding-left: 22px;
+  text-indent: -22px;
 }

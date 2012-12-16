@@ -23,7 +23,7 @@ function MainController($scope, $element, $http){
 
   $scope.editCitation = function(citation){
     $scope.selectedCitation = citation
-    $scope.showModal = true
+    $scope.showEdit = true
   }
 
   $scope.compileCitation = function(citation){

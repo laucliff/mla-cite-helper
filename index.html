@@ -30,7 +30,8 @@
         <select ng-model="selectedFormat" ng-options="resource.type for resource in formats"></select>
         <a ng-click="addCitation(selectedFormat)">Add Citation</a>
       </div>
-      <div ui-sortable ng-model="citations">
+
+      <div ui-sortable ng-model="citations" class="citeBox" ng-show="citations.length">
         <div ng-repeat="citation in citations">
           <div class="citation">
             <div ng-click="editCitation(citation)" ng-bind-html="compileCitation(citation)"></div>
@@ -39,15 +40,27 @@
         </div>
       </div>
 
+      <div class="finishBox">
+        <button ng-click="showExport=true">Finish</a>
+      </div>
+
     </div>
 
-    <div ui-modal ng-model="showModal">
+    <div ui-modal ng-model="showExport">
+      <p class="export-title">Works Cited</p>
+      <div ng-repeat="citation in citations">
+        <div ng-bind-html="compileCitation(citation)" class="export-citation"></div>
+      </div>
+      <a ng-click="showExport=false">Close</a>
+    </div>
+
+    <div ui-modal ng-model="showEdit">
       <!-- {{selectedCitation}} -->
       <div ng-repeat="field in selectedCitation.fields">
         {{field.name}}
         <input type="text" ng-model="field.value"></input>
       </div>
-      <a ng-click="showModal=false">Close</a>
+      <a ng-click="showEdit=false">Close</a>
     </div>
 
   </body>
