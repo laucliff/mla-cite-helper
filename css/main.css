@@ -27,6 +27,8 @@
   padding: 7px;
   margin: 4px;
   position: relative;
+  cursor: hand;
+  cursor: pointer;
 }
 
 .citation button{
