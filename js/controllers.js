@@ -1,4 +1,4 @@
-function MainController($scope, $element, $http){
+function MainController($scope, $http, $filter){
 
   $http.get('data/formats.json').success(function(data){
     $scope.formats = data
@@ -10,6 +10,7 @@ function MainController($scope, $element, $http){
   }
 
   $scope.citations = []
+  $scope.showEdit = false
 
   $scope.addCitation = function(selectedFormat){
 
@@ -41,8 +42,20 @@ function MainController($scope, $element, $http){
     return compiled
   }
 
+  $scope.sortCitations = function(){
+    this.citations = $filter('orderBy')(this.citations, 'fields[0].value')
+  }
+
+  $scope.$watch('showEdit', function(newValue, oldValue){
+    //Sort citations triggered when user finishes edit
+    var finishedEdit = !newValue && oldValue
+    if (finishedEdit) $scope.sortCitations()
+  }, true)
+
   $scope.removeCitation = function(index){
     this.citations.splice(index, 1)
   }
+
+
 
 }

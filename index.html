@@ -41,12 +41,10 @@
       <div class="box" ng-show="citations.length">
         <div class="box-title">Step 2</div>
         <div class="box-description">Organize and Edit.</div>
-        <div ui-sortable ng-model="citations">
-          <div ng-repeat="citation in citations">
-            <div class="citation">
-              <div ng-click="editCitation(citation)" ng-bind-html="compileCitation(citation)"></div>
-              <button ng-click="removeCitation($index)">&times;</button>
-            </div>
+        <div ng-repeat="citation in citations">
+          <div class="citation">
+            <div ng-click="editCitation(citation)" ng-bind-html="compileCitation(citation)"></div>
+            <button ng-click="removeCitation($index)">&times;</button>
           </div>
         </div>
       </div>
