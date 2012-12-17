@@ -78,10 +78,14 @@
         <h3>{{selectedCitation.type}}</h3>
       </div>
       <div class="modal-body">
-        <div ng-repeat="field in selectedCitation.fields">
-          {{field.name}}
-          <input type="text" ng-model="field.value"></input>
-        </div>
+        <form class="form-horizontal" ng-repeat="field in selectedCitation.fields">
+          <div class="control-group">
+            <label class="control-label">{{field.name}}</label>
+            <div class="controls">
+              <input type="text" ng-model="field.value" style="display: inline-block"></input>
+            </div>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <a href="#" class="btn" ng-click="showEdit=false">Done</a>
