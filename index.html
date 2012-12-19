@@ -20,6 +20,7 @@
     <script src="js/controllers.js"></script>
     <script src="js/directives.js"></script>
     <script src="js/services.js"></script>
+    <script src="js/filters.js"></script>
 
   </head>
 
@@ -64,7 +65,7 @@
       </div>
       <div class="modal-body">
         <p class="export-title">Works Cited</p>
-        <div ng-repeat="citation in citations">
+        <div ng-repeat="citation in citations | groupSameAuthors">
           <div ng-bind-html="compileCitation(citation)" class="export-citation"></div>
         </div>
       </div>

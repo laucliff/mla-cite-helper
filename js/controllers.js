@@ -19,7 +19,6 @@ function MainController($scope, $http, $filter){
     angular.copy(selectedFormat, newCitation)
     this.citations.push(newCitation)
     this.editCitation(newCitation)
-
   }
 
   $scope.editCitation = function(citation){
@@ -30,13 +29,16 @@ function MainController($scope, $http, $filter){
   $scope.compileCitation = function(citation){
     var compiled = ""
 
-    var fieldValue = function(field){
+    function fieldValue(field){
       var value = field.value || field.name
       if (field.style) value = $scope.tagText(value, field.style)
       return value
     }
 
-    if (citation.authors.length > 3){
+    if (citation.isSameAuthor) {
+      // repeated works by the same author have '---' instead of the author repeatedly displayed.
+      compiled += '---'
+    } else if (citation.authors.length > 3){
       //author count greater than 4 results in first author listed, then et al
       compiled += ' ' + citation.authors[0].lastName + ', ' + citation.authors[0].firstName + ', et al'
     } else {
