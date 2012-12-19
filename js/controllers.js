@@ -36,6 +36,23 @@ function MainController($scope, $http, $filter){
       return value
     }
 
+    if (citation.authors.length > 3){
+      //author count greater than 4 results in first author listed, then et al
+      compiled += ' ' + citation.authors[0].lastName + ', ' + citation.authors[0].firstName + ', et al'
+    } else {
+      //list out all authors
+      angular.forEach(citation.authors, function(author, index){
+        if (index == 0){
+          compiled += ' ' + author.lastName + ', ' + author.firstName
+        } else {
+          compiled += (index != citation.authors.length-1) ? ',' : ', and'
+          compiled += ' ' + author.firstName + ' ' + author.lastName
+        }
+      })
+    }
+
+    compiled += '.'
+
     angular.forEach(citation.fields, function(field){
       compiled = compiled + ' ' + fieldValue(field) + field.delimiter
     })
@@ -56,6 +73,17 @@ function MainController($scope, $http, $filter){
     this.citations.splice(index, 1)
   }
 
+  $scope.addAuthor = function(authors){
+    var newAuthor = {
+      "firstName": "First Name",
+      "lastName" : "Last Name"
+    }
+    authors.push(newAuthor)
+  }
+
+  $scope.removeAuthor = function(authors){
+    authors.pop()
+  }
 
 
 }

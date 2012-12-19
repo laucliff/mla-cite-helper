@@ -1,15 +1,13 @@
 [
   {
     "type":"Book",
+    "authors":[
+      {
+        "firstName":"First Name",
+        "lastName":"Last Name"
+      }
+    ],
     "fields":[
-      {
-        "name":"Last Name",
-        "delimiter":","
-      },
-      {
-        "name":"First Name",
-        "delimiter":"."
-      },
       {
         "name":"Title",
         "delimiter":".",
