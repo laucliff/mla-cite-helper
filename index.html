@@ -76,29 +76,27 @@
         <h3>{{selectedCitation.type}}</h3>
       </div>
       <div class="modal-body">
-        <div ng-repeat="author in selectedCitation.authors" ng-show="selectedCitation.authors.length < 4">
-          Last Name
-          <input type="text" ng-model="author.lastName">
-          First Name
-          <input type="text" ng-model="author.firstName">
+        <div class="form-horizontal" ng-repeat="author in selectedCitation.authors">
+          <div class="control-group" ng-show="$first || selectedCitation.authors.length < 4">
+            <div class="control-label">Author {{$index + 1}}</div>
+            <div class="controls">
+              <input type="text" ng-model="author.lastName" class="input-medium">
+              , 
+              <input type="text" ng-model="author.firstName" class="input-small">
+            </div>
+          </div>
         </div>
-        <div ng-hide="selectedCitation.authors.length < 4">
-          Last Name
-          <input type="text" ng-model="selectedCitation.authors[0].lastName">
-          First Name
-          <input type="text" ng-model="selectedCitation.authors[0].firstName">
-          <p>et al.</p>
-        </div>
+        <p ng-hide="selectedCitation.authors.length < 4">et al.</p>
         <button type="button" ng-click="addAuthor(selectedCitation.authors)" ng-show="selectedCitation.authors.length < 4">+author</button>
         <button type="button" ng-click="removeAuthor(selectedCitation.authors)" ng-show="selectedCitation.authors.length > 0">-author</button>
-        <form class="form-horizontal" ng-repeat="field in selectedCitation.fields">
+        <div class="form-horizontal" ng-repeat="field in selectedCitation.fields">
           <div class="control-group">
-            <label class="control-label">{{field.name}}</label>
+            <div class="control-label">{{field.name}}</div>
             <div class="controls">
               <input type="text" ng-model="field.value">
             </div>
           </div>
-        </form>
+        </div>
       </div>
       <div class="modal-footer">
         <a href="#" class="btn" ng-click="showEdit=false">Done</a>
