@@ -60,7 +60,9 @@ function MainController($scope, $http, $filter){
   }
 
   $scope.sortCitations = function(){
-    this.citations = $filter('orderBy')(this.citations, 'authors[0].lastName')
+    this.citations = $filter('orderBy')(this.citations, function(citation){
+      return (citation.authors.length > 0) ? citation.authors[0].lastName : citation.fields[0].value
+    })
   }
 
   $scope.$watch('showEdit', function(newValue, oldValue){
