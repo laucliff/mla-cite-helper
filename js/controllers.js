@@ -54,7 +54,8 @@ function MainController($scope, $http, $filter){
     if (citation.authors.length > 0) compiled += '.'
 
     angular.forEach(citation.fields, function(field){
-      compiled = compiled + ' ' + fieldValue(field) + field.delimiter
+      //list out remaining fields
+      compiled += ' ' + fieldValue(field) + field.delimiter
     })
     return compiled
   }
