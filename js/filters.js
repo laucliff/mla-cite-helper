@@ -6,7 +6,7 @@ angular.module('filters',[])
     angular.forEach(citations, function(citation){
       var filteredCitation = {}
       angular.copy(citation, filteredCitation)
-      if (angular.equals(currentAuthors,citation.authors)){
+      if (angular.equals(currentAuthors,citation.authors) && citation.authors.length > 0){
         filteredCitation.isSameAuthor = true
       } else {
         currentAuthors = citation.authors
