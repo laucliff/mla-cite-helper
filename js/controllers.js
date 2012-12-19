@@ -51,7 +51,7 @@ function MainController($scope, $http, $filter){
       })
     }
 
-    compiled += '.'
+    if (citation.authors.length > 0) compiled += '.'
 
     angular.forEach(citation.fields, function(field){
       compiled = compiled + ' ' + fieldValue(field) + field.delimiter
@@ -60,7 +60,7 @@ function MainController($scope, $http, $filter){
   }
 
   $scope.sortCitations = function(){
-    this.citations = $filter('orderBy')(this.citations, 'fields[0].value')
+    this.citations = $filter('orderBy')(this.citations, 'authors[0].lastName')
   }
 
   $scope.$watch('showEdit', function(newValue, oldValue){
