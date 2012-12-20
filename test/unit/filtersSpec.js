@@ -1,19 +1,144 @@
 'use strict';
 
+
+
 /* jasmine specs for filters go here */
 
-// describe('filter', function() {
-//   beforeEach(module('myApp.filters'));
+describe('filter', function() {    
+  beforeEach(module('mla-cite-helper'))
 
+var testdata = [
+  {
+    "type":"Book",
+    "authors":[
+      {
+        "firstName":"First Name",
+        "lastName":"Last Name"
+      }
+    ],
+    "fields":[
+      {
+        "name":"Title",
+        "delimiter":".",
+        "style":"em"
+      },
+      {
+        "name":"Place of Publication",
+        "delimiter":":"
+      },
+      {
+        "name":"Publisher",
+        "delimiter":","
+      },
+      {
+        "name":"Year of Publication",
+        "delimiter":"."
+      },
+      {
+        "name":"Medium of Publication",
+        "delimiter":"."
+      }
+    ]
+  },  {
+    "type":"Book",
+    "authors":[
+      {
+        "firstName":"First Name",
+        "lastName":"Last Name"
+      }
+    ],
+    "fields":[
+      {
+        "name":"Title",
+        "delimiter":".",
+        "style":"em"
+      },
+      {
+        "name":"Place of Publication",
+        "delimiter":":"
+      },
+      {
+        "name":"Publisher",
+        "delimiter":","
+      },
+      {
+        "name":"Year of Publication",
+        "delimiter":"."
+      },
+      {
+        "name":"Medium of Publication",
+        "delimiter":"."
+      }
+    ]
+  }, {
+    "type":"Book",
+    "authors":[
+      {
+        "firstName":"First Name",
+        "lastName":"Last Name"
+      }
+    ],
+    "fields":[
+      {
+        "name":"Title",
+        "delimiter":".",
+        "style":"em"
+      },
+      {
+        "name":"Place of Publication",
+        "delimiter":":"
+      },
+      {
+        "name":"Publisher",
+        "delimiter":","
+      },
+      {
+        "name":"Year of Publication",
+        "delimiter":"."
+      },
+      {
+        "name":"Medium of Publication",
+        "delimiter":"."
+      }
+    ]
+  },  {
+    "type":"Book",
+    "authors":[
+      {
+        "firstName":"First Name",
+        "lastName":"Last Name"
+      }
+    ],
+    "fields":[
+      {
+        "name":"Title",
+        "delimiter":".",
+        "style":"em"
+      },
+      {
+        "name":"Place of Publication",
+        "delimiter":":"
+      },
+      {
+        "name":"Publisher",
+        "delimiter":","
+      },
+      {
+        "name":"Year of Publication",
+        "delimiter":"."
+      },
+      {
+        "name":"Medium of Publication",
+        "delimiter":"."
+      }
+    ]
+  }
+]
 
-//   describe('interpolate', function() {
-//     beforeEach(module(function($provide) {
-//       $provide.value('version', 'TEST_VER');
-//     }));
+    
+  it('should mark the same author', inject(function($filter){
+    var testArray = $filter('groupSameAuthors')(testdata)
+    expect(testArray[1].isSameAuthor).toEqual(true)
+  }))
+})
 
-
-//     it('should replace VERSION', inject(function(interpolateFilter) {
-//       expect(interpolateFilter('before %VERSION% after')).toEqual('before TEST_VER after');
-//     }));
-//   });
-// });

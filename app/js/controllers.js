@@ -40,15 +40,15 @@ function MainController($scope, $http, $filter){
       compiled += '---'
     } else if (citation.authors.length > 3){
       //author count greater than 4 results in first author listed, then et al
-      compiled += ' ' + citation.authors[0].lastName + ', ' + citation.authors[0].firstName + ', et al'
+      compiled += citation.authors[0].lastName + ', ' + citation.authors[0].firstName + ', et al'
     } else {
       //list out all authors
       angular.forEach(citation.authors, function(author, index){
         if (index == 0){
-          compiled += ' ' + author.lastName + ', ' + author.firstName
+          compiled += author.lastName + ', ' + author.firstName
         } else {
-          compiled += (index != citation.authors.length-1) ? ',' : ', and'
-          compiled += ' ' + author.firstName + ' ' + author.lastName
+          compiled += (index != citation.authors.length-1) ? ', ' : ', and '
+          compiled += author.firstName + ' ' + author.lastName
         }
       })
     }
